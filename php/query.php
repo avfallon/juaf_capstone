@@ -1,11 +1,12 @@
 <?php
  include( "constants.php");
  $username = Constants::USERNAME;
-
+ echo $username;
  // credentials to connect to sqli
  $mysqli = new mysqli( Constants::HOST, $username, Constants::PASSWORD, Constants::DATABASE);
+ echo "hello";
 
- $result = $mysqli->query("select * from Pets");
+ $result = $mysqli->query("select * from user_info");
 
  // make an array of json pet objects
  $array = [];
@@ -13,17 +14,11 @@
  {
   // assign the values into the json object
    array_push($array, [
-     'ownerIDKey' => $row['OwnerIDKey'],
-     'petIDKey' => $row['PetIDKey'],
-     'name' => $row['Name'],
-     'species' => $row['Species'],
-     'size' => $row['Size'],
-     'temperament' => $row['Temperament'],
-     'breed' => $row['Breed'],
-     'age' => $row['Age'],
-     'diet' => $row['Diet'],
-     'healthIssues' => $row['HealthIssues'],
-     'extraInfo' => $row['ExtraInfo']
+     'id' => $row['OwnerIDKey'],
+     'account_name' => $row['id'],
+     'account_email' => $row['account_email'],
+     'current_funds' => $row['current_funds'],
+     'recent_purcahse' => $row['recent_purchase'],
    ]);
  }
 
