@@ -2,7 +2,7 @@ import subprocess
 
 
 class SQLModel:
-    def __init__(self, username, password, host, database):
+    def __init__(self):
         # main_table, referencing_table, key
 
         result = subprocess.run(
@@ -19,4 +19,4 @@ class SQLModel:
         print("test")
 
 
-SQLModel("avfallon", "1757355", "cs-database.cs.loyola.edu", "avfallon")
+SQLModel()
