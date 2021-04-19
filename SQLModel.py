@@ -18,5 +18,17 @@ class SQLModel:
     def test(self):
         print("test")
 
+    def updateDB(self):
+        print("updating database")
+
+    def adminAddAccount(self):
+        print("adding account")
+
+    def adminEditAccount(self, account_id):
+        print("editing account")
+
+    def sendEmails(self):
+        print("sending emails")
+
 
 SQLModel()
