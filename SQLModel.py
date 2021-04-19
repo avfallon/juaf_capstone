@@ -6,7 +6,7 @@ class SQLModel:
         # main_table, referencing_table, key
 
         result = subprocess.run(
-            ['php', 'query.php'],
+            ['php', 'php/query.php'],
             stdout=subprocess.PIPE,
             check=True
         )
