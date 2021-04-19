@@ -2,9 +2,9 @@
  include( "constants.php");
  $username = Constants::USERNAME;
  echo $username;
+ echo "\n";
  // credentials to connect to sqli
  $mysqli = new mysqli( Constants::HOST, $username, Constants::PASSWORD, Constants::DATABASE);
- echo "hello";
 
  $result = $mysqli->query("select * from user_info");
 
@@ -27,5 +27,5 @@
 
  //reurn the array of pets in the database
  echo $result;
-
+ echo "\n";
  ?>
