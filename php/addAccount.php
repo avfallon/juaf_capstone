@@ -14,34 +14,25 @@
 
 
   // get each field from the json to create pet
-  $ownerIDKey = $obj->ownerIDKey;
-  echo $ownerIDKey;
-  $petIDKey = $obj->petIDKey;
-  echo $petIDKey;
-  $name = $obj->name;
-  echo $name;
-  $species = $obj->species;
-  echo $species;
-  $size = $obj->size;
-  echo $size;
-  $temperament = $obj->temperament;
-  echo $temperament;
-  $breed = $obj->breed;
-  echo $breed;
-  $age = $obj->age;
-  echo $age;
-  $diet = $obj->diet;
-  echo $diet;
-  $healthIssues = $obj->healthIssues;
-  echo $healthIssues;
-  $extraInfo = $obj->extraInfo;
-  echo $extraInfo;
+  $account_name = $obj->account_name;
+  echo $account_name
+  $account_email = $obj->account_email;
+  echo $accoun_email
+  $current_funds = $obj->current_funds;
+  echo $current_funds
+  $recent_purchase = $obj->recent_purchase;
+  echo $recent_purchase
+
 
   // sql query to the database to create the pet
-  $query = "insert into Pets (ownerIDKey, name, species, size, temperament, breed, age, diet, healthIssues, extraInfo) values('$ownerIDKey', '$name', '$species', '$size', '$temperament', '$breed', '$age', '$diet' , '$healthIssues', '$extraInfo')";
+  $query = "insert into user_info (account_name, account_email, current_funds, recent_purchase) values('$account_name', '$account_email', '$current_funds', '$recent_purchase')";
 
   // run the query
   $result = $mysqli->query($query);
-  echo "Pet Added Sucessfully";
+
+  $id = $mysqli->query("select id from user_info where account_email = '$account_email';");
+  echo $id
+
+  echo "Account Added Sucessfully";
 ?>
 
