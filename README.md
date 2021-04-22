@@ -24,6 +24,9 @@ We are continuing to fully link up our database to our website, and implementing
 
 We still need to implement the automated email functionality of our administrative program, as well as extending the user interface to include that expanded functionality. Once functionality is completed, we will have to generate an executable file for easy use of the program. 
 
+Selenium testing will need to be completed on the website to ensure it reaches full functionality and does not contain broken links/buttons. In addition to the comments about the website, the code for the site needs to be cleaned before we hand it over to our client. There is a lot of unneeded files/code that will be trimmed down to help our clients transition it to their own site. 
+
+A packaged .exe will need to be created for the program along with a GUI for admins. 
 
 ## Dependencies
 
@@ -38,16 +41,15 @@ We still need to implement the automated email functionality of our administrati
 
 Our code can be found at https://github.com/avfallon/juaf_capstone
 
-**Website:** 
 
-**Admin Program:**
+**Admin Program: python3 Controller.py**
 
 
 ## Instructions for Running
 
-**Website:** 
+**Website: juaf.cs.loyola.edu ** 
 
-**Admin Program:**
+**Admin Program: Not Avaiable** 
 
 
 
