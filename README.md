@@ -22,7 +22,7 @@ The administrative program is not entirely complete, but we have implemented a s
 
 We are continuing to fully link up our database to our website, and implementing javascript to receive the results of the PHP scripts and translate it to the front-end of the website. We also are not providing a fully customer-facing front end, as ZehnTek has their own style guidelines for their front-end that their developers will implement upon delivery. However, we still have to fully flesh out our front end to make it as realistic and presentable as possible.
 
-We still need to implement the automated email functionality of our administrative program, as well as extending the user interface to include that expanded functionality. 
+We still need to implement the automated email functionality of our administrative program, as well as extending the user interface to include that expanded functionality. Once functionality is completed, we will have to generate an executable file for easy use of the program. 
 
 
 ## Dependencies
