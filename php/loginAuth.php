@@ -1,6 +1,8 @@
 <?php
-include( "constants.php" );
-include( "getUserInfo.php" );
+ // This is a script that receives a username and password, checks if they match in the database,
+ // and returns the associated account information if they are matched correctly
+ include( "constants.php" );
+ include( "getUserInfo.php" );
  $username = Constants::USERNAME;
 
  // connect to database using credentials

@@ -1,5 +1,6 @@
 <?php
-function getUserInfo($id, $mysqli){
+ // This is a function that can be called by other scripts and returns the info of a user if given an id
+ function getUserInfo($id, $mysqli){
    $result = $mysqli->query("select * from user_info where id=$id");
 	 // make an array of json account objects
 	 $array = [];

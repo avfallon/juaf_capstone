@@ -1,4 +1,5 @@
 <?php
+ // This script returns all the emails and their associated zehnfunds in the database
  include( "constants.php");
  $username = Constants::USERNAME;
 

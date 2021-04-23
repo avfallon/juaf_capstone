@@ -1,5 +1,5 @@
 <?php
-  // Assign JSON encoded string to a PHP variable
+  // This script assigns a JSON encoded string of a new account and adds it to the database
   include( "constants.php");
   $username = Constants::USERNAME;
 
