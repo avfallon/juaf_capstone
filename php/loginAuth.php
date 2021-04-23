@@ -1,5 +1,6 @@
 <?php
-include( "constants.php");
+include( "constants.php" );
+include( "getUserInfo.php" );
  $username = Constants::USERNAME;
 
  // connect to database using credentials
@@ -12,22 +13,12 @@ include( "constants.php");
  // run a sql query using the info the client provided to sign in the user
  $result = $mysqli->query("select * from login_info where username = '$username' AND password = '$password'");
 
-// make an array of json object that store the users information
- $array = [];
- while($row = $result->fetch_assoc())
- {
-   // make the user object and store it in a json
-   array_push($array, [
-     'account_id' => $row['accout_id'],
-     'username' => $row['username'],
-     'password' => $row['password'],
-   ]);
- }
-
-// make it a json and then return that
- $result = json_encode($array);
-
- echo $result;
+if(empty($result)) {
+	echo "login unsuccessful";
+}
+else {
+	// Echos the user information associated with that id
+	getUserInfo($result->fetch_assoc()['id'])
+}
 
  ?>
-
