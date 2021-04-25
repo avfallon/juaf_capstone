@@ -9,7 +9,9 @@
 
  $result = $mysqli->query("select * from user_info");
 
- // make an array of json account objects
+
+echo $argv[0];
+
  $array = [];
  while($row = $result->fetch_assoc())
  {
