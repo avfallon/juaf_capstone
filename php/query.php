@@ -12,9 +12,6 @@
 
 echo $argv[0];
 
-
-
- // make an array of json pet objects
  $array = [];
  while($row = $result->fetch_assoc())
  {
@@ -31,7 +28,7 @@ echo $argv[0];
  //encode the array into json
  $result = json_encode($array);
 
- //reurn the array of pets in the database
+ //reurn the array of accounts in the database
  echo $result;
  echo "\n";
  ?>

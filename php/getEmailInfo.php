@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
  // This script returns all the emails and their associated zehnfunds in the database
+>>>>>>> 1343f0ab8d3a46ae0569d5410c4f60eb728ce824
  include( "constants.php");
  $username = Constants::USERNAME;
 
