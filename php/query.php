@@ -9,6 +9,11 @@
 
  $result = $mysqli->query("select * from user_info");
 
+
+echo $argv[0];
+
+
+
  // make an array of json pet objects
  $array = [];
  while($row = $result->fetch_assoc())
