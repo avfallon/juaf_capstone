@@ -1,5 +1,5 @@
 <?php
-  // Assign JSON encoded string to a PHP variable
+  // This script assigns a JSON encoded string of a new account and adds it to the database
   include( "constants.php");
   $username = Constants::USERNAME;
 
@@ -18,10 +18,6 @@
   echo $account_name;
   $account_email = $obj->account_email;
   echo $account_email;
-  $current_funds = $obj->current_funds;
-  echo $current_funds;
-  $recent_purchase = $obj->recent_purchase;
-  echo $recent_purchase;
   $username = $obj->username;
   echo $username;
   $password = $obj->password;
@@ -42,4 +38,3 @@
 
   echo "Account Added Sucessfully";
 ?>
-

@@ -1,4 +1,5 @@
 <?php
+ // This is a basic script to return the entire database for testing purposes
  include( "constants.php");
  $username = Constants::USERNAME;
  echo $username;
