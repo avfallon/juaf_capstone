@@ -68,12 +68,8 @@ class Controller:
     # and then uses SMTP protocol to send out those emails
     def sendEmails(self):
         print("Sending emails")
-        result = self.model.getEmailInfo()
-        if self.model.sendEmails() == 0:
-            print("Emails sent successfully")
-        else:
-            print("Error sending emails")
-
+        self.model.getEmailInfo()
+	
 
 
 
