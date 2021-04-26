@@ -16,7 +16,7 @@ class Controller:
 
         # This loop continues until the user enters 'exit'
         while True:
-            response = input("1 - add new account\n2 - lookup account by email\n3 - send out update emails\n4 - exit the program")
+            response = input("1 - add new account\n2 - lookup account by email\n3 - send out update emails\n4 - exit the program\n")
 
             if response == "1":
                 self.addAccount()

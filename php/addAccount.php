@@ -6,35 +6,31 @@
   // connect to database using credentials
   $mysqli = new mysqli( Constants::HOST, $username, Constants::PASSWORD, Constants::DATABASE);
 
-  $json = $_GET['json'];
-
-  // Decode JSON data to PHP object
-  $obj = json_decode($json);
-  // Access values from the returned object
-
-
   // get each field from the json to create account
-  $account_name = $obj->account_name;
-  echo $account_name;
-  $account_email = $obj->account_email;
-  echo $account_email;
-  $username = $obj->username;
-  echo $username;
-  $password = $obj->password;
-  echo $password
+  $account_name = $argv[1];
+  echo "$account_name\n";
+  $account_email = $argv[2];
+  echo "$account_email\n";
+  $username = $argv[3];
+  echo "$username\n";
+  $password = $argv[4];
+  echo "$password\n";
 
 
 
   // sql query to the database to create the account_info row
-  $query = "insert into user_info (account_name, account_email, current_funds, recent_purchase) values('$account_name', '$account_email', '$current_funds', '$recent_purchase')";
+  $user_info_query = "insert into user_info (account_name, account_email) values('$account_name', '$account_email')";
+  $login_info_query = "insert into login_info (account_email, password) values('$account_email', '$password')";
 
   // run the query
-  $result = $mysqli->query($query);
+  if($mysqli->query($user_info_query)) {
 
-  $id = $mysqli->query("select id from user_info where account_email = '$account_email';");
-  echo $id;
+    // Add the username/password to the login_info table if successful
+    $mysqli->query($login_info_query);
+  }
+  else {
+    echo "Failed to add account";
+  }
 
-// Use that id to add the username/password to the login_info table
 
-  echo "Account Added Sucessfully";
 ?>

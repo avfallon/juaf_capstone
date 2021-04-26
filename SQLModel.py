@@ -3,17 +3,15 @@ import json
 
 class SQLModel:
     def __init__(self):
-        subprocess.call(["php", "-f", "query.php", "1"])
+        subprocess.call(["php", "-f", "php/query.php", "1"])
 
     def lookupAccount(self, email):
         print("Model looking up account")
-        self.cursor.execute("SELECT * FROM %s WHERE %s = '%s';"
-                            % (self.user_info, self.key, email))
-        return self.cursor.fetchall()
 
 
     def addAccount(self, name, email, username, password):
         print("model adding account")
+        subprocess.call(["php","-f","php/addAccount.php", name, email, username, password])
 
 
     def getEmailInfo(self):
