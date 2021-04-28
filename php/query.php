@@ -10,12 +10,6 @@
  $result = $mysqli->query("select * from user_info");
 
 
-echo "test\n";
-echo $argv[1];
-echo "endtest\n";
-
-
-
  $array = [];
  while($row = $result->fetch_assoc())
  {
