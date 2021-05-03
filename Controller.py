@@ -2,7 +2,7 @@
 # This contains the text-based interface functionality for that program
 
 from SQLModel import *
-import smtplib
+import smtplib , ssl
 
 class Controller:
 
@@ -60,7 +60,30 @@ class Controller:
     # and then uses SMTP protocol to send out those emails
     def sendEmails(self):
         print("Sending emails")
-        self.model.getEmailInfo()
+        sender = 'juaf2021@gmail.com'
+        receivers = ['jumanzor31@gmail.com']
+
+        message = """From: From Person <from@fromdomain.com>
+        To: To Person <to@todomain.com>
+        Subject: SMTP e-mail test
+
+        This is a test e-mail message.
+        """
+
+        port = 465  # For SSL
+        password = 'Leuven21'
+        context = ssl.create_default_context()
+        smtp_server = "smtp.gmail.com"
+
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login("juaf2021@gmail.com", password)
+            # for( user :  )
+
+
+
+            server.sendmail(sender, receivers, message)
+
+
 	
 
 
