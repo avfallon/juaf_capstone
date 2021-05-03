@@ -38,14 +38,10 @@ class Controller:
         print("Adding account")
         name = input("Name of the account: ")
         email = input("Email of the account: ")
-        username = input("Username of the account: ")
         password = input("Password of the account: ")
 
         # This is the actual call to the database
-        if self.model.addAccount(name, email, username, password) == 0:
-            print("Account created successfully")
-        else:
-            print("Error creating account")
+        self.model.addAccount(name, email, password)
 
 
 
@@ -57,11 +53,6 @@ class Controller:
         email = input("Email: ")
 
         account_result = self.model.lookupAccount(email)
-        if len(account_result) != 0:
-            print("That account was found successfully")
-            print(account_result)
-        else:
-            print("That email was not found, returning to main program")
 
 
     # This function calls the database function to lookup all emails and their funds in the DB,
