@@ -5,6 +5,7 @@ class SQLModel:
 
     def lookupAccount(self, email):
         print("Model looking up account")
+        return subprocess.check_output(["php","-f","php/lookupAccount.php", email])
 
 
     def addAccount(self, name, email, username, password):

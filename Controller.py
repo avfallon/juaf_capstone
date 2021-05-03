@@ -12,6 +12,7 @@ class Controller:
         #self.smtpObj = smtplib.SMTP([host[, port[, local_hostname]]] )
 
 
+    def cli(self):
         print("Enter either 1, 2, 3, or 4 to access those functionalities")
 
         # This loop continues until the user enters 'exit'
@@ -51,17 +52,8 @@ class Controller:
 
     # This function takes in the email of the account to find, calls the database to find it,
     # and prints the result
-    def lookupAccount(self):
-        print("Looking up account")
-        print("Enter the email of the account you want to look up")
-        email = input("Email: ")
-
-        account_result = self.model.lookupAccount(email)
-        if len(account_result) != 0:
-            print("That account was found successfully")
-            print(account_result)
-        else:
-            print("That email was not found, returning to main program")
+    def lookupAccount(self, email):
+        return self.model.lookupAccount(email)
 
 
     # This function calls the database function to lookup all emails and their funds in the DB,
