@@ -21,9 +21,6 @@ class ZehnFunds_AdministratorApp(App):
 
         self.parent_box.add_widget(self.button_menu_builder())
 
-        # self.email_view = self.email_view_builder()
-        # self.parent_box.add_widget(self.email_view)
-
         self.search_bar = self.search_bar_builder()
         self.parent_box.add_widget(self.search_bar)
 
@@ -116,14 +113,19 @@ class ZehnFunds_AdministratorApp(App):
     def searchEmail(self, search_btn):
         print("Searching email")
         #print(self.search_bar.children[1].text)
-        #self.search_results = self.controller.lookupAccount(self.search_bar.children[1].text)
-        #print(self.search_results)
+        self.search_results = self.controller.lookupAccount(self.search_bar.children[1].text)
+        print(self.search_results)
         self.search_results = ["andrew", "andrew@gmail.com", "password", "2356"]
         self.create_account_labels(self.search_results)
 
 
+    # This function is called by the "Send Emails" button at the bottom of the Send Emails screen
     def sendEmails(self, email_body):
         print("Sending emails: ", email_body)
+
+    # This function is called by the 'Send Emails' button at the top of the screen
+    def switch_to_Email(self, email_btn):
+        self.email_view_builder()
 
 
     def button_menu_builder(self):
@@ -146,7 +148,9 @@ class ZehnFunds_AdministratorApp(App):
         send_btn = Button(text="Send Emails", on_press=email_lambda, size_hint=(.4, .2), pos_hint={'x':.5})
         email_box.add_widget(send_btn)
 
-        return email_box
+        self.parent_box.remove_widget(self.account_view)
+        self.parent_box.remove_widget(self.search_bar)
+        self.parent_box.add_widget(email_box)
 
 
     def search_bar_builder(self):
