@@ -22,7 +22,7 @@ class Controller:
     # This function takes in the email of the account to find, calls the database to find it,
     # and returns the result
     def lookupAccount(self, email):
-        return self.model.lookupAccount(email)
+        print(self.model.lookupAccount(email))
 
     # Save account
     def save_account(self, name, email, password):
