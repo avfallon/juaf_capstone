@@ -97,4 +97,4 @@ class Controller:
 
 
 
-Controller().sendEmails()
+Controller()
