@@ -6,9 +6,6 @@ import subprocess
 import json
 
 class SQLModel:
-    def __init__(self):
-        answer = subprocess.check_output(["php", "-f", "php/query.php"]);
-    
     def lookupAccount(self, email):
         self.calculateFunds(email)
         print("Model looking up account")
@@ -26,12 +23,20 @@ class SQLModel:
 
 
     def getEmailInfo(self):
-        #print("model sending emails")
-        return subprocess.check_output(["php","-f","php/getEmailInfo.php"])
-
+        print("model sending emails")
+        #return subprocess.check_output(["php","-f","php/getEmailInfo.php"])
 
     def calculateFunds(self, email):
         subprocess.call(["php","-f","php/calculateFunds.php", email])
+
+    def save_account(self, name, email, password):
+        print("Saving account")
+        print(name, email, password)
+
+    def delete_account(self, email):
+        print("Deleting Account")
+        #subprocess.call(["php","-f","php/deleteAccount.php", email])
+
 
 
 SQLModel()

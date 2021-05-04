@@ -38,7 +38,7 @@ class ZehnFunds_AdministratorApp(App):
         self.create_account_textboxes(self.search_results)
 
 
-
+    # This function displays the textboxes for adding a new account to the database
     def open_add_account(self, add_btn):
         self.search_bar.opacity = 0;
         self.set_account_opacity(True)
@@ -59,13 +59,15 @@ class ZehnFunds_AdministratorApp(App):
             print("textbox column doesnt exist")
             textinputBox = BoxLayout(id='textboxes', orientation='vertical', size_hint=(.65, 1),  spacing=20)
             for i in range(4):
-                textinputBox.add_widget(TextInput(text=contents_list[(i+1)*-1]))
+                textinputBox.add_widget(TextInput(text=contents_list[i]))
 
             self.account_view.children[0].remove_widget(input_layout)
             self.account_view.children[0].add_widget(textinputBox)
 
         self.set_account_opacity(True)
 
+    # This function replaces the labels or textboxes on the right side of account_view with labels
+    # containing the account's information
     def create_account_labels(self, contents_list):
         input_layout = self.account_view.children[0].children[0]
         if input_layout.id == 'input_labels':
@@ -76,8 +78,9 @@ class ZehnFunds_AdministratorApp(App):
         else:
             print("label column doesnt exist")
             input_labels = BoxLayout(id='input_labels', orientation='vertical', size_hint=(.65, 1),  spacing=20)
+            index = 3
             for i in range(4):
-                input_labels.add_widget(Label(text=contents_list[(i+1)*-1]))
+                input_labels.add_widget(Label(text=contents_list[i]))
 
             self.account_view.children[0].remove_widget(input_layout)
             self.account_view.children[0].add_widget(input_labels)
@@ -86,7 +89,7 @@ class ZehnFunds_AdministratorApp(App):
 
 
 
-
+    # This function sets the visibility of the edit, dave, and delete buttons based on whether the account is being edited
     def set_account_opacity(self, editing_account):
         self.account_view.opacity = 1
         if editing_account:
@@ -106,26 +109,33 @@ class ZehnFunds_AdministratorApp(App):
 
 
     def save_account(self, save_btn):
-        print("saving assount")
-        self.controller.save_account(self.account_view.children[0].children[3].text)
+        print("saving account")
+        input_box = self.account_view.children[0].children[0].children
+        self.controller.save_account(input_box[3].text, input_box[2].text, input_box[0].text)
+        self.account_view.opacity = 0
+
+    def delete_account(self, delete_btn):
+        self.controller.delete_account(self.account_view.children[0].children[0].children[2])
+        self.account_view.opacity = 0
 
 
     def searchEmail(self, search_btn):
         print("Searching email")
         #print(self.search_bar.children[1].text)
-        self.search_results = self.controller.lookupAccount(self.search_bar.children[1].text)
-        print(self.search_results)
-        self.search_results = ["andrew", "andrew@gmail.com", "password", "2356"]
-        self.create_account_labels(self.search_results)
+        # self.search_results = self.controller.lookupAccount(self.search_bar.children[1].text)
+        # print(self.search_results)
+        if self.search_bar.children[1].text != "andrew@gmail.com":
+            self.search_bar.children[1].text = ""
+            self.search_bar.children[1].hint_text = "Email Not Found"
+        else:
+            self.search_results = ["andrew", "andrew@gmail.com", "2356", "password"]
+            self.create_account_labels(self.search_results)
 
 
-    # This function is called by the "Send Emails" button at the bottom of the Send Emails screen
-    def sendEmails(self, email_body):
-        print("Sending emails: ", email_body)
-
-    # This function is called by the 'Send Emails' button at the top of the screen
-    def switch_to_Email(self, email_btn):
-        self.email_view_builder()
+    # This function is called by the "Send Emails" button at the top of the screen
+    def sendEmails(self, email_btn):
+        print("Sending Emails")
+        # self.controller.sendEmails()
 
 
     def button_menu_builder(self):
@@ -133,24 +143,9 @@ class ZehnFunds_AdministratorApp(App):
 
         horizontalBox.add_widget(Button(text="Lookup Account", on_press=self.openLookup))
         horizontalBox.add_widget(Button(text="Add Account", on_press=self.open_add_account))
-        horizontalBox.add_widget(Button(text="Send Update Emails"))
+        horizontalBox.add_widget(Button(text="Send Update Emails", on_press=self.sendEmails))
 
         return horizontalBox
-
-    def email_view_builder(self):
-        email_box = BoxLayout(id='email', orientation='vertical', opacity=0, size_hint=(1, .8))
-        email_text = "Hello *customer*, thank you for using Zehntek. Your current ZehnFunds rewards total is: *total*"
-        email_msg = TextInput(text=email_text, size_hint=(1, .8))
-        email_box.add_widget(email_msg)
-
-        email_lambda = lambda: self.sendEmails(email_msg.text)
-
-        send_btn = Button(text="Send Emails", on_press=email_lambda, size_hint=(.4, .2), pos_hint={'x':.5})
-        email_box.add_widget(send_btn)
-
-        self.parent_box.remove_widget(self.account_view)
-        self.parent_box.remove_widget(self.search_bar)
-        self.parent_box.add_widget(email_box)
 
 
     def search_bar_builder(self):
@@ -171,7 +166,7 @@ class ZehnFunds_AdministratorApp(App):
         editBtns = BoxLayout(orientation='horizontal', spacing=20, size_hint=(1, .2))
         editBtns.add_widget(Button(text="Save", on_press=self.save_account))
         editBtns.add_widget(Button(text="Edit", on_press=self.open_edit_account))
-        editBtns.add_widget(Button(text="Delete"))
+        editBtns.add_widget(Button(text="Delete", on_press=self.delete_account))
         accountBoxLayout.add_widget(editBtns)
 
         account_info = BoxLayout(orientation='horizontal', spacing=10, size_hint=(1, .8))
