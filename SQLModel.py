@@ -1,3 +1,7 @@
+# This file executed php scripts to communicate with the ZehnFunds database in response to Controller function calls
+# Authors: Andrew Fallon and Jeffrey Umanzor
+# Last Edited: 5/3/21
+
 import subprocess
 import json
 
