@@ -8,6 +8,7 @@ class SQLModel:
     def lookupAccount(self, email):
         self.calculateFunds(email)
         print("Model looking up account")
+        return subprocess.check_output(["php","-f","php/lookupAccount.php", email])
 
         subprocess.call(["php","-f","php/lookupAccount.php", email])
         subprocess.call(["php","-f","php/lookupPassword.php", email])
@@ -21,8 +22,8 @@ class SQLModel:
 
 
     def getEmailInfo(self):
-        print("model sending emails")
-        subprocess.call(["php","-f","php/getEmailInfo.php"])
+        #print("model sending emails")
+        return subprocess.check_output(["php","-f","php/getEmailInfo.php"])
 
 
     def calculateFunds(self, email):
